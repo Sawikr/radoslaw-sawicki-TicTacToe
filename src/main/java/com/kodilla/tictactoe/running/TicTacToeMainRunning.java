@@ -7,7 +7,8 @@ import com.kodilla.tictactoe.logic.win.GameWinner;
 
 /**
  * @author Radoslaw Sawicki
- * @version 0.0.3
+ * @version 0.0.2
+ * @apiNote Task: 9.2
  */
 
 public class TicTacToeMainRunning {
