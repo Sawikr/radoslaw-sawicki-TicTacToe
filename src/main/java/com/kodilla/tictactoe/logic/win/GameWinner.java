@@ -3,7 +3,6 @@ package com.kodilla.tictactoe.logic.win;
 import com.kodilla.tictactoe.logic.move.NextMove;
 import com.kodilla.tictactoe.logic.move.PerformMove;
 import java.util.logging.Logger;
-
 import static com.kodilla.tictactoe.logic.move.PerformMove.movesCounter;
 
 public class GameWinner {
