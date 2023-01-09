@@ -12,11 +12,11 @@ public class PerformMove {
         int dim = board.length;
         System.out.println("\nPlayer '" + activePlayer + "', enter a row number: ");
         int row = new Scanner(System.in).nextInt();
-        row = ChoiceController.getCorrectArrayIndex(board, row, activePlayer);
+        row = ChoiceController.getCorrectArrayIndex(board, row);
 
         System.out.println("Player '" + activePlayer + "', enter a column number: ");
         int col = new Scanner(System.in).nextInt();
-        col = ChoiceController.getCorrectArrayIndex(board, col, activePlayer);
+        col = ChoiceController.getCorrectArrayIndex(board, col);
 
         if (board[row][col] == 0){//If a field is free
             board[row][col] = activePlayer;

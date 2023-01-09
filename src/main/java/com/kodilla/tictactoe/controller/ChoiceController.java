@@ -1,7 +1,6 @@
 package com.kodilla.tictactoe.controller;
 
 import com.kodilla.tictactoe.logic.move.PerformMove;
-
 import java.util.Scanner;
 
 public class ChoiceController {
@@ -20,7 +19,7 @@ public class ChoiceController {
         PerformMove.performPlayerMove(board, activePlayer);
     }
 
-    public static int getCorrectArrayIndex(char[][] board, int rowOrCol, char activePlayer){
+    public static int getCorrectArrayIndex(char[][] board, int rowOrCol){
         int dim = board.length;
         while (rowOrCol < 0 || rowOrCol >= dim) {
             System.out.println("Move invalid, please try again!");
