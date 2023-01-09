@@ -19,4 +19,13 @@ public class ChoiceController {
         System.out.println("Move invalid, please try again!");
         PerformMove.performPlayerMove(board, activePlayer);
     }
+
+    public static int getCorrectArrayIndex(char[][] board, int rowOrCol, char activePlayer){
+        int dim = board.length;
+        while (rowOrCol < 0 || rowOrCol >= dim) {
+            System.out.println("Move invalid, please try again!");
+            rowOrCol = new Scanner(System.in).nextInt();
+        }
+        return rowOrCol;
+    }
 }

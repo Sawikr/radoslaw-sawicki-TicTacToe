@@ -12,17 +12,12 @@ public class PerformMove {
         int dim = board.length;
         System.out.println("\nPlayer '" + activePlayer + "', enter a row number: ");
         int row = new Scanner(System.in).nextInt();
-        while (row < 0 || row >= dim){
-            System.out.println("Player '" + activePlayer + "', enter a row number: ");
-            row = new Scanner(System.in).nextInt();
-        }
+        row = ChoiceController.getCorrectArrayIndex(board, row, activePlayer);
 
         System.out.println("Player '" + activePlayer + "', enter a column number: ");
         int col = new Scanner(System.in).nextInt();
-        while (col < 0 || col >= dim){
-            System.out.println("Player '" + activePlayer + "', enter a column number: ");
-            row = new Scanner(System.in).nextInt();
-        }
+        col = ChoiceController.getCorrectArrayIndex(board, col, activePlayer);
+
         if (board[row][col] == 0){//If a field is free
             board[row][col] = activePlayer;
             //Move correct
