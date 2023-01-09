@@ -10,7 +10,6 @@ public class GameWinner {
     private static final Logger logger = Logger.getLogger(GameWinner.class.getName());
 
     public static void numberOfWinningMoves(char[][] board, char activePlayer) {
-
         //Variables
         int dim = board.length;
         char winner = 0;
