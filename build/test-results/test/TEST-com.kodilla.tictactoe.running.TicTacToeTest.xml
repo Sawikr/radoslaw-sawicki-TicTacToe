@@ -1,26 +1,125 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.kodilla.tictactoe.running.TicTacToeTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-01-12T18:22:13" hostname="IDEA-PC" time="0.263">
+<testsuite name="com.kodilla.tictactoe.running.TicTacToeTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2023-01-13T00:12:27" hostname="IDEA-PC" time="0.2">
   <properties/>
-  <testcase name="Name of test: testWinOInColumns" classname="com.kodilla.tictactoe.running.TicTacToeTest" time="0.263"/>
+  <testcase name="Name of test: testWinXInRows" classname="com.kodilla.tictactoe.running.TicTacToeTest" time="0.064"/>
+  <testcase name="Name of test: testWinXInDiagonalsOne" classname="com.kodilla.tictactoe.running.TicTacToeTest" time="0.01"/>
+  <testcase name="Name of test: testWinXInDiagonalsTwo" classname="com.kodilla.tictactoe.running.TicTacToeTest" time="0.008"/>
+  <testcase name="Name of test: testWinOInRows" classname="com.kodilla.tictactoe.running.TicTacToeTest" time="0.005"/>
+  <testcase name="Name of test: testXOrOInDrawGame" classname="com.kodilla.tictactoe.running.TicTacToeTest" time="0.007"/>
+  <testcase name="Name of test: testXOrOInErrorChoice" classname="com.kodilla.tictactoe.running.TicTacToeTest" time="0.023"/>
+  <testcase name="Name of test: testWinXInColumns" classname="com.kodilla.tictactoe.running.TicTacToeTest" time="0.008"/>
+  <testcase name="Name of test: testWinOInColumns" classname="com.kodilla.tictactoe.running.TicTacToeTest" time="0.017"/>
+  <testcase name="Name of test: testWinOInDiagonalsOne" classname="com.kodilla.tictactoe.running.TicTacToeTest" time="0.014"/>
+  <testcase name="Name of test: testWinOInDiagonalsTwo" classname="com.kodilla.tictactoe.running.TicTacToeTest" time="0.009"/>
   <system-out><![CDATA[
 Test Case: begin!
 Preparing to execute test #1
 
 Game board:
 	0.	1.	2.	
-0.	?	?	?	
+0.	X	X	X	
 1.	?	?	?	
 2.	?	?	?	
 
-Game board:
-	0.	1.	2.	
-0.	0	?	?	
-1.	0	?	?	
-2.	0	?	?	
 Test Case: end!
 
+Test Case: begin!
+Preparing to execute test #2
+
+Game board:
+	0.	1.	2.	
+0.	X	?	?	
+1.	?	X	?	
+2.	?	?	X	
+
+Test Case: end!
+
+Test Case: begin!
+Preparing to execute test #3
+
+Game board:
+	0.	1.	2.	
+0.	?	?	X	
+1.	?	X	?	
+2.	X	?	?	
+
+Test Case: end!
+
+Test Case: begin!
+Preparing to execute test #4
+
+Game board:
+	0.	1.	2.	
+0.	O	O	O	
+1.	?	?	?	
+2.	?	?	?	
+
+Test Case: end!
+
+Test Case: begin!
+Preparing to execute test #5
+
+Game board:
+	0.	1.	2.	
+0.	0	0	X	
+1.	X	X	0	
+2.	0	X	0	
+
+Test Case: end!
+
+Test Case: begin!
+Preparing to execute test #6
+
+Enter the size of the game board [3-10]: 
+Choice invalid, please try again!
+Enter the size of the game board [3-10]:
+We caught exception DimFromIntroductionException: null!
+
+Test Case: end!
+
+Test Case: begin!
+Preparing to execute test #7
+
+Game board:
+	0.	1.	2.	
+0.	X	?	?	
+1.	X	?	?	
+2.	X	?	?	
+
+Test Case: end!
+
+Test Case: begin!
+Preparing to execute test #8
+
+Game board:
+	0.	1.	2.	
+0.	O	?	?	
+1.	O	?	?	
+2.	O	?	?	
+
+Test Case: end!
+
+Test Case: begin!
+Preparing to execute test #9
+
+Game board:
+	0.	1.	2.	
+0.	O	?	?	
+1.	?	O	?	
+2.	?	?	O	
+
+Test Case: end!
+
+Test Case: begin!
+Preparing to execute test #10
+
+Game board:
+	0.	1.	2.	
+0.	?	?	O	
+1.	?	O	?	
+2.	O	?	?	
+
+Test Case: end!
 ]]></system-out>
-  <system-err><![CDATA[sty 12, 2023 7:22:13 PM com.kodilla.tictactoe.running.TicTacToeTest testWinOInColumns
-INFO: Won is: true
-]]></system-err>
+  <system-err><![CDATA[]]></system-err>
 </testsuite>

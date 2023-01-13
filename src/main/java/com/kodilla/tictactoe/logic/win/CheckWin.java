@@ -4,7 +4,7 @@ public class CheckWin {
 
     static int dim;
 
-    static boolean checkOneDiagonal(char[][] board, char activePlayer){
+    public static boolean checkOneDiagonal(char[][] board, char activePlayer){
         //Retrieving the length of the board
         //Necessary for the test!!!
         dim = board.length;
@@ -16,7 +16,7 @@ public class CheckWin {
         return true;
     }
 
-    static boolean checkTwoDiagonal(char[][] board, char activePlayer){
+    public static boolean checkTwoDiagonal(char[][] board, char activePlayer){
         //Retrieving the length of the board
         //Necessary for the test!!!
         dim = board.length;

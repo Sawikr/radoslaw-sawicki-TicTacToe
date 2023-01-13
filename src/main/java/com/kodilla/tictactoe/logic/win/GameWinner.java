@@ -22,7 +22,7 @@ public class GameWinner {
             won = CheckWinner.checkWinner(board, activePlayer);
             //logger.info("Won is: " + won);
             if (!won) {
-                draw = DrawMove.drawMove(board);
+                draw = DrawMove.drawMove(board, movesCounter);
                 //logger.info("Draw is: " + draw);
             }
             if (!won && !draw) {

@@ -1,7 +1,6 @@
 package com.kodilla.tictactoe.display;
 
 import com.kodilla.tictactoe.controller.ChoiceController;
-
 import java.util.Scanner;
 
 public class GameIntroduction {
@@ -17,6 +16,4 @@ public class GameIntroduction {
                 "The size of the game board is from 0 to " + dimMinusOne + " rows and columns!");
         return board;
     }
-
-
 }

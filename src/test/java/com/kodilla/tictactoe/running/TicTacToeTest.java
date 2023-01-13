@@ -1,11 +1,15 @@
 package com.kodilla.tictactoe.running;
 
+import com.kodilla.tictactoe.controller.ChoiceController;
 import com.kodilla.tictactoe.display.GameBoard;
+import com.kodilla.tictactoe.display.GameIntroduction;
+import com.kodilla.tictactoe.logic.move.DrawMove;
 import com.kodilla.tictactoe.logic.win.CheckWin;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import java.util.NoSuchElementException;
 import java.util.logging.Logger;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -21,7 +25,7 @@ public class TicTacToeTest {
 
     @AfterEach
     public void after() {
-        System.out.println("Test Case: end!\n");
+        System.out.println("\nTest Case: end!");
     }
 
     @BeforeEach
@@ -36,28 +40,22 @@ public class TicTacToeTest {
         //Other solution
         char[][] boardOther = {
                 { 'X', '0', 'X' },
-                { 'X', 'X', '0' },
+                { 'X', 'X', 'O' },
                 { 'O', 'X', 'X' },
         };
 
         //Given
         char[][] board = {
-                { 0, 0, 0 },
-                { 0, 0, 0 },
-                { 0, 0, 0 },
+                {'O','O','O'},
+                { 0,  0,  0 },
+                { 0,  0,  0 },
         };
-
-        char activePlayer = '0';
         GameBoard.printBoard(board);
+        char activePlayer = 'O';
 
         //When
-        board[0][0] = activePlayer;
-        board[0][1] = activePlayer;
-        board[0][2] = activePlayer;
-        GameBoard.printBoard(board);
-
         boolean won = CheckWin.checkWinInRows(board, activePlayer);
-        logger.info("Won is: " + won);
+        //logger.info("Won is: " + won);
 
         //Then
         assertTrue(won);
@@ -68,34 +66,62 @@ public class TicTacToeTest {
     @Test
     void testWinOInColumns(){
         //Given
-        char activePlayer = '0';
-        char[][] board = new char[3][3];
+        char[][] board = {
+                {'O', 0, 0 },
+                {'O', 0, 0 },
+                {'O', 0, 0 },
+        };
         GameBoard.printBoard(board);
+        char activePlayer = 'O';
 
         //When
-        board[0][0] = activePlayer;
-        board[1][0] = activePlayer;
-        board[2][0] = activePlayer;
-        GameBoard.printBoard(board);
-
         boolean won = CheckWin.checkWinInColumns(board, activePlayer);
-        logger.info("Won is: " + won);
+        //logger.info("Won is: " + won);
 
         //Then
         assertTrue(won);
 
     }
 
-    @DisplayName("Name of test: testWinOInDiagonals")
+    @DisplayName("Name of test: testWinOInDiagonalsOne")
     @Test
-    void testWinOInDiagonals(){
+    void testWinOInDiagonalsOne(){
         //Given
-
+        char[][] board = {
+                {'O', 0,  0 },
+                { 0, 'O', 0 },
+                { 0,  0, 'O'},
+        };
+        GameBoard.printBoard(board);
+        char activePlayer = 'O';
 
         //When
-
+        boolean won = CheckWin.checkOneDiagonal(board, activePlayer);
+        //logger.info("Won is: " + won);
 
         //Then
+        assertTrue(won);
+
+    }
+
+    @DisplayName("Name of test: testWinOInDiagonalsTwo")
+    @Test
+    void testWinOInDiagonalsTwo(){
+        //Given
+        char[][] board = {
+                { 0,  0, 'O'},
+                { 0, 'O', 0 },
+                {'O', 0,  0 },
+        };
+        GameBoard.printBoard(board);
+        char activePlayer = 'O';
+
+        //When
+        boolean won = CheckWin.checkTwoDiagonal(board, activePlayer);
+        //logger.info("Won is: " + won);
+
+        //Then
+        assertTrue(won);
 
     }
 
@@ -103,12 +129,20 @@ public class TicTacToeTest {
     @Test
     void testWinXInRows(){
         //Given
-
+        char[][] board = {
+                {'X','X','X'},
+                { 0,  0,  0 },
+                { 0,  0,  0 },
+        };
+        GameBoard.printBoard(board);
+        char activePlayer = 'X';
 
         //When
-
+        boolean won = CheckWin.checkWinInRows(board, activePlayer);
+        //logger.info("Won is: " + won);
 
         //Then
+        assertTrue(won);
 
     }
 
@@ -116,25 +150,62 @@ public class TicTacToeTest {
     @Test
     void testWinXInColumns(){
         //Given
-
+        char[][] board = {
+                {'X', 0, 0 },
+                {'X', 0, 0 },
+                {'X', 0, 0 },
+        };
+        GameBoard.printBoard(board);
+        char activePlayer = 'X';
 
         //When
-
+        boolean won = CheckWin.checkWinInColumns(board, activePlayer);
+        //logger.info("Won is: " + won);
 
         //Then
+        assertTrue(won);
 
     }
 
-    @DisplayName("Name of test: testWinXInDiagonals")
+    @DisplayName("Name of test: testWinXInDiagonalsOne")
     @Test
-    void testWinXInDiagonals(){
+    void testWinXInDiagonalsOne(){
         //Given
-
+        char[][] board = {
+                {'X', 0,  0 },
+                { 0, 'X', 0 },
+                { 0,  0, 'X'},
+        };
+        GameBoard.printBoard(board);
+        char activePlayer = 'X';
 
         //When
-
+        boolean won = CheckWin.checkOneDiagonal(board, activePlayer);
+        //logger.info("Won is: " + won);
 
         //Then
+        assertTrue(won);
+
+    }
+
+    @DisplayName("Name of test: testWinXInDiagonalsTwo")
+    @Test
+    void testWinXInDiagonalsTwo(){
+        //Given
+        char[][] board = {
+                { 0,  0, 'X'},
+                { 0, 'X', 0 },
+                {'X', 0,  0 },
+        };
+        GameBoard.printBoard(board);
+        char activePlayer = 'X';
+
+        //When
+        boolean won = CheckWin.checkTwoDiagonal(board, activePlayer);
+        //logger.info("Won is: " + won);
+
+        //Then
+        assertTrue(won);
 
     }
 
@@ -142,25 +213,38 @@ public class TicTacToeTest {
     @Test
     void testXOrOInDrawGame(){
         //Given
-
+        char[][] board = {
+                {'0','0','X'},
+                {'X','X','0'},
+                {'0','X','0'},
+        };
+        GameBoard.printBoard(board);
+        int movesCounter = 9;
 
         //When
-
+        boolean won = DrawMove.drawMove(board, movesCounter);
+        //logger.info("Won is: " + won);
 
         //Then
+        assertTrue(won);
 
     }
 
-    @DisplayName("Name of test: testXOrOInErrorMove")
+    //Exceptions in this application are not necessary!
+    @DisplayName("Name of test: testXOrOInErrorChoice")
     @Test
-    void testXOrOInErrorMove(){
+    void testXOrOInErrorChoice(){
         //Given
-
+        GameIntroduction gameIntroduction = new GameIntroduction();
 
         //When
-
+        try {
+            gameIntroduction.printIntroduction();
+        } catch (NoSuchElementException e) {
+            e.fillInStackTrace();
+        }
 
         //Then
-
+        assertThrows(NoSuchElementException.class, () -> ChoiceController.getDimFromIntroduction(2));
     }
 }
