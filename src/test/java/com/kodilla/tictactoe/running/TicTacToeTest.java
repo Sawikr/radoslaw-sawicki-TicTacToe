@@ -5,10 +5,7 @@ import com.kodilla.tictactoe.display.GameBoard;
 import com.kodilla.tictactoe.display.GameIntroduction;
 import com.kodilla.tictactoe.logic.move.DrawMove;
 import com.kodilla.tictactoe.logic.win.CheckWin;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import java.util.NoSuchElementException;
 import java.util.logging.Logger;
 import static org.junit.jupiter.api.Assertions.*;
@@ -231,9 +228,9 @@ public class TicTacToeTest {
     }
 
     //Exceptions in this application are not necessary!
-    @DisplayName("Name of test: testXOrOInErrorChoice")
+    @DisplayName("Name of test: testOneXOrOInErrorChoice")
     @Test
-    void testXOrOInErrorChoice(){
+    void testOneXOrOInErrorChoice(){
         //Given
         GameIntroduction gameIntroduction = new GameIntroduction();
 
@@ -246,5 +243,20 @@ public class TicTacToeTest {
 
         //Then
         assertThrows(NoSuchElementException.class, () -> ChoiceController.getDimFromIntroduction(2));
+        assertDoesNotThrow(() -> ChoiceController.getDimFromIntroduction(3));
+    }
+
+    //Exceptions in this application are not necessary!
+    @DisplayName("Name of test: testTwoXOrOInErrorChoice")
+    @Test
+    void testTwoXOrOInErrorChoice(){
+        //Given
+        Exception thrown = Assertions.assertThrows(NoSuchElementException.class, () -> ChoiceController.getDimFromIntroduction(2),
+                "We caught exception DimFromIntroductionException!");
+
+        //Then
+        assertNull(thrown.getMessage());
+        //Other
+        assertEquals(null, thrown.getMessage());
     }
 }

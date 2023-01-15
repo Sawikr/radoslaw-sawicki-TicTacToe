@@ -2,7 +2,6 @@ package com.kodilla.tictactoe.controller;
 
 import com.kodilla.tictactoe.exception.DimFromIntroductionException;
 import com.kodilla.tictactoe.logic.move.PerformMove;
-
 import java.util.Arrays;
 import java.util.NoSuchElementException;
 import java.util.Scanner;

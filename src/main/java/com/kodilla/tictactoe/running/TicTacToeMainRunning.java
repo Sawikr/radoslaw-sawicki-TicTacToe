@@ -2,7 +2,6 @@ package com.kodilla.tictactoe.running;
 
 import com.kodilla.tictactoe.display.GameBoard;
 import com.kodilla.tictactoe.display.GameIntroduction;
-import com.kodilla.tictactoe.exception.DimFromIntroductionException;
 import com.kodilla.tictactoe.logic.move.FirstMove;
 import com.kodilla.tictactoe.logic.win.GameWinner;
 
