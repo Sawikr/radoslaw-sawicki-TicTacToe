@@ -1,2 +1,12 @@
-package com.kodilla.tictactoe.logic.algorithmMinMax;public class PointAndScore {
+package com.kodilla.tictactoe.logic.algorithmMinMax;
+
+public class PointAndScore {
+
+    public int score;
+    public Point point;
+
+    public PointAndScore(int score, Point point) {
+        this.score = score;
+        this.point = point;
+    }
 }

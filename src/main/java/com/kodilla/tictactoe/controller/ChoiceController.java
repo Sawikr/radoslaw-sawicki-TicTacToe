@@ -2,7 +2,6 @@ package com.kodilla.tictactoe.controller;
 
 import com.kodilla.tictactoe.exception.DimFromIntroductionException;
 import com.kodilla.tictactoe.logic.move.PerformMove;
-import java.util.Arrays;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -40,5 +39,23 @@ public class ChoiceController {
             rowOrCol = new Scanner(System.in).nextInt();
         }
         return rowOrCol;
+    }
+
+    public static int getCorrectArrayIndexChoice(int choice){
+        while (choice <= 0 || choice > 2) {
+            System.out.println("Move invalid, please try again!");
+            choice = new Scanner(System.in).nextInt();
+        }
+        return choice;
+    }
+
+    public static String getCorrectName(String choice){
+        while (!choice.equals("USER") && !choice.equals("COMPUTER") &&
+                !choice.equals("EASY") && !choice.equals("HARD")) {
+            System.out.println("Choice invalid, please try again!");
+            Scanner input = new Scanner(System.in);
+            choice = input.next().toUpperCase();
+        }
+        return choice;
     }
 }

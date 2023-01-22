@@ -4,6 +4,7 @@ import com.kodilla.tictactoe.logic.move.DrawMove;
 import com.kodilla.tictactoe.logic.move.NextMove;
 import com.kodilla.tictactoe.logic.move.PerformMove;
 import java.util.logging.Logger;
+import static com.kodilla.tictactoe.logic.move.NextMove.activeComputer;
 import static com.kodilla.tictactoe.logic.move.PerformMove.movesCounter;
 
 public class GameWinner {
@@ -34,7 +35,11 @@ public class GameWinner {
             System.exit(0);}
         else {
             winner = activePlayer;
-            System.out.println("\nWinner is: " + winner + "!");
+            if (winner != activeComputer){
+                System.out.println("\nWinner is: " + winner + "!");
+            }
+            else
+                System.out.println("\nWinner is computer!");
         }
     }
 }
