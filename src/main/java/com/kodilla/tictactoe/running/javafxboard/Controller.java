@@ -1,5 +1,6 @@
 package com.kodilla.tictactoe.running.javafxboard;
 
+import com.kodilla.tictactoe.running.javafxboard.gameoption.GameOptionConsoleOrJavaFx;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -80,7 +81,13 @@ public class Controller implements Initializable {
         Optional<ButtonType> option = alert.showAndWait();
 
         if (option.get() == ButtonType.OK) {
-            Platform.exit();
+            try {
+                Platform.exit();
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                System.out.println("Game over!");
+            }
 
         } else if (option.get() == ButtonType.CANCEL) {
             System.out.println("Nothing happens!");
@@ -95,7 +102,6 @@ public class Controller implements Initializable {
 
         if (option.get() == ButtonType.OK) {
             stage.close();
-
         } else if (option.get() == ButtonType.CANCEL) {
             System.out.println("Nothing happens!");
         }

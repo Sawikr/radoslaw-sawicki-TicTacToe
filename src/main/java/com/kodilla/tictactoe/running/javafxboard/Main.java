@@ -10,7 +10,7 @@ import static com.kodilla.tictactoe.running.javafxboard.Controller.closeProgram;
 
 /**
  * @author Radoslaw Sawicki
- * @version 1.0.0
+ * @version 1.0.1
  * @apiNote Program with javaFX
  * @apiNote Task: 9.2
  */
@@ -31,9 +31,21 @@ public class Main extends Application {
 
     }
 
+    //Method is not necessary!
+    @Override
+    public void stop() throws Exception {
+        super.stop();
+    }
+
     public static void endGame(Stage stage) {
         stage.setOnCloseRequest(e -> {
             e.consume();
+            try {
+                Main main = new Main();
+                main.stop();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
             closeProgram(stage);
         });
     }
@@ -43,6 +55,5 @@ public class Main extends Application {
         GameOptionConsoleOrJavaFx.gameChoice();
         if (javaFx)
             launch(args);
-
     }
 }

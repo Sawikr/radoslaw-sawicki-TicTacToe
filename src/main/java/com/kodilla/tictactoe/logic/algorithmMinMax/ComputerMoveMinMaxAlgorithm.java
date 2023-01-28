@@ -67,11 +67,11 @@ public class ComputerMoveMinMaxAlgorithm {
             boardMinMax.displayBoard(board);
         }
 
-        if (boardMinMax.hasPlayerWonInGame(board, Board.PLAYER_X)) {
+        if (boardMinMax.hasPlayerWonInGame(board, (char) Board.PLAYER_X)) {
             System.out.println("You lost!");
             GameOptionConsoleOrJavaFx.gameChoice();
         }
-        else if (boardMinMax.hasPlayerWonInGame(board, Board.PLAYER_O)) {
+        else if (boardMinMax.hasPlayerWonInGame(board, (char) Board.PLAYER_O)) {
             System.out.println("You win!");
             GameOptionConsoleOrJavaFx.gameChoice();
         }
