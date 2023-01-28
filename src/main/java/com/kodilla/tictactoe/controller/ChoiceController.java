@@ -58,4 +58,13 @@ public class ChoiceController {
         }
         return choice;
     }
+
+    public static String getCorrectNameConsoleOrJavaFx(String choice){
+        while (!choice.equals("CONSOLE") && !choice.equals("JAVAFX")) {
+            System.out.println("Choice invalid, please try again!");
+            Scanner input = new Scanner(System.in);
+            choice = input.next().toUpperCase();
+        }
+        return choice;
+    }
 }

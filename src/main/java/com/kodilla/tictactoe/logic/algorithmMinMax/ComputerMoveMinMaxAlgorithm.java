@@ -3,6 +3,7 @@ package com.kodilla.tictactoe.logic.algorithmMinMax;
 import com.kodilla.tictactoe.controller.ChoiceController;
 import com.kodilla.tictactoe.display.GameBoard;
 import com.kodilla.tictactoe.logic.win.GameWinner;
+import com.kodilla.tictactoe.running.javafxboard.gameoption.GameOptionConsoleOrJavaFx;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.logging.Logger;
@@ -66,13 +67,18 @@ public class ComputerMoveMinMaxAlgorithm {
             boardMinMax.displayBoard(board);
         }
 
-        if (boardMinMax.hasPlayerWon(board, Board.PLAYER_X)) {
+        if (boardMinMax.hasPlayerWonInGame(board, Board.PLAYER_X)) {
             System.out.println("You lost!");
+            GameOptionConsoleOrJavaFx.gameChoice();
         }
-        else if (boardMinMax.hasPlayerWon(board, Board.PLAYER_O)) {
+        else if (boardMinMax.hasPlayerWonInGame(board, Board.PLAYER_O)) {
             System.out.println("You win!");
+            GameOptionConsoleOrJavaFx.gameChoice();
         }
-        else
+        //else if (DrawMove.drawMove(board, movesCounter)) {
+        else {
             System.out.println("Draw!");
+            GameOptionConsoleOrJavaFx.gameChoice();
+        }
     }
 }
