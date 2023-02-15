@@ -19,8 +19,8 @@ public class Board {
     }
 
     public boolean hasPlayerWonInGame(char[][] board, int player) {
-        return CheckWin.checkOneDiagonal(board, player) || CheckWin.checkTwoDiagonal(board, player) ||
-                CheckWin.checkWinInRows(board, player) || CheckWin.checkWinInColumns(board, player);
+        return CheckWinMinMaxAlg.checkOneDiagonal(board, player) || CheckWinMinMaxAlg.checkTwoDiagonal(board, player) ||
+                CheckWinMinMaxAlg.checkWinInRows(board, player) || CheckWinMinMaxAlg.checkWinInColumns(board, player);
     }
 
     public List<Point> getAvailableCells(char[][] board) {
@@ -44,6 +44,7 @@ public class Board {
         return true;
     }
 
+    // public char[][] - display empty array (error)
     public void displayBoard(char[][] board) {
         System.out.print("\nGame board:\n");
         int dim = board.length;
@@ -67,7 +68,6 @@ public class Board {
             }
             System.out.println();
         }
-        System.out.println();
     }
 
     public int miniMax(char[][] board, int depth, int turn) {

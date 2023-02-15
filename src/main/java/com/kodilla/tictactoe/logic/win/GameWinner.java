@@ -1,8 +1,12 @@
 package com.kodilla.tictactoe.logic.win;
 
+import com.kodilla.tictactoe.display.GameBoard;
 import com.kodilla.tictactoe.logic.move.DrawMove;
 import com.kodilla.tictactoe.logic.move.NextMove;
 import com.kodilla.tictactoe.logic.move.PerformMove;
+import com.kodilla.tictactoe.running.javafxboard.gameoption.GameOptionConsoleOrJavaFx;
+import com.kodilla.tictactoe.save.SaveWinners;
+import java.time.LocalDate;
 import java.util.logging.Logger;
 import static com.kodilla.tictactoe.logic.move.NextMove.activeComputer;
 import static com.kodilla.tictactoe.logic.move.PerformMove.movesCounter;
@@ -30,16 +34,24 @@ public class GameWinner {
                 NextMove.nextMove(board, activePlayer);
             }
         }
-        if (draw){
-            System.out.println("\nThe game ended in a draw!");
-            System.exit(0);}
+        if (draw) {
+            System.out.println("\nDraw!");
+            GameOptionConsoleOrJavaFx.gameChoice();
+        }
         else {
             winner = activePlayer;
             if (winner != activeComputer){
                 System.out.println("\nWinner is: " + winner + "!");
+                String winnerEnd = "Player " + winner;
+                SaveWinners saveWinners = new SaveWinners(winnerEnd, LocalDate.now());
+                GameOptionConsoleOrJavaFx.gameChoice();
             }
-            else
+            else {
                 System.out.println("\nWinner is computer!");
+                String winnerEnd = "Player " + winner;
+                SaveWinners saveWinners = new SaveWinners(winnerEnd, LocalDate.now());
+                GameOptionConsoleOrJavaFx.gameChoice();
+            }
         }
     }
 }

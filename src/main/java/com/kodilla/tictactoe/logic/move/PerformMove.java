@@ -2,6 +2,8 @@ package com.kodilla.tictactoe.logic.move;
 
 import com.kodilla.tictactoe.controller.ChoiceController;
 import com.kodilla.tictactoe.display.GameBoard;
+import com.kodilla.tictactoe.save.GameOptionSaveGame;
+
 import java.util.Scanner;
 
 public class PerformMove {
@@ -9,6 +11,9 @@ public class PerformMove {
     public static int movesCounter = 0;
 
     public static void performPlayerMove(char[][] board, char activePlayer){
+
+        //Choice save game!
+        GameOptionSaveGame.gameChoice(board);
 
         System.out.println("\nPlayer '" + activePlayer + "', enter a row number: ");
         int row = new Scanner(System.in).nextInt();

@@ -67,4 +67,13 @@ public class ChoiceController {
         }
         return choice;
     }
+
+    public static String getCorrectNameConsoleSaveGame(String choice){
+        while (!choice.equals("SAVE") && !choice.equals("LOAD") && !choice.equals("PLAY")) {
+            System.out.println("Choice invalid, please try again!");
+            Scanner input = new Scanner(System.in);
+            choice = input.next().toUpperCase();
+        }
+        return choice;
+    }
 }

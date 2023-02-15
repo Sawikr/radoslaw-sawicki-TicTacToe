@@ -4,6 +4,7 @@ import com.kodilla.tictactoe.controller.ChoiceController;
 import com.kodilla.tictactoe.running.TicTacToeMainRunning;
 import com.kodilla.tictactoe.running.javafxboard.Main;
 import java.util.Scanner;
+import static com.kodilla.tictactoe.logic.move.PerformMove.movesCounter;
 
 enum OptionJavaFx {
     CONSOLE,
@@ -13,6 +14,7 @@ enum OptionJavaFx {
         switch (option) {
             case CONSOLE -> {
                 System.out.println("Game on a computer console!");
+                GameOptionConsoleOrJavaFx.console = true;
                 TicTacToeMainRunning.mainRunning();
             }
             case JAVAFX -> {
@@ -28,6 +30,7 @@ public class GameOptionConsoleOrJavaFx {
     static OptionJavaFx option;
     static Scanner input;
     public static String choice;
+    public static boolean console;
 
     public GameOptionConsoleOrJavaFx(OptionJavaFx option) {
         GameOptionConsoleOrJavaFx.option = option;
@@ -41,6 +44,9 @@ public class GameOptionConsoleOrJavaFx {
 
         input = new Scanner(System.in);
         choice = input.next().toUpperCase();
+
+        //Clearing the movesCounter
+        movesCounter = 0;
 
         String correct = ChoiceController.getCorrectNameConsoleOrJavaFx(choice);
         if (correct.equals("CONSOLE") || correct.equals("JAVAFX"))

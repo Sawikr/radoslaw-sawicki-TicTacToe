@@ -1,6 +1,6 @@
 package com.kodilla.tictactoe.logic.algorithmMinMax;
 
-public class CheckWin {
+public class CheckWinMinMaxAlg {
 
     public static boolean checkOneDiagonal(char[][] board, int player) {
         int dim = board.length;
@@ -57,21 +57,6 @@ public class CheckWin {
             }
             if (win) {
                 //logger.info(player + " is true");
-                return true;
-            }
-        }
-        return false;
-    }
-
-    //Method works for an array of 3 x 3. Method not used!
-    public boolean hasPlayerWon(char[][] board, int player) {
-        if ((board[0][0] == board[1][1] && board[0][0] == board[2][2] && board[0][0] == player) ||
-                (board[0][2] == board[1][1] && board[0][2] == board[2][0] && board[0][2] == player)) {
-            return true;
-        }
-        for (int i = 0; i < board.length; ++i) {
-            if (((board[i][0] == board[i][1] && board[i][0] == board[i][2] && board[i][0] == player)
-                    || (board[0][i] == board[1][i] && board[0][i] == board[2][i] && board[0][i] == player))) {
                 return true;
             }
         }

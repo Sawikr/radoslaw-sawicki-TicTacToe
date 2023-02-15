@@ -1,6 +1,5 @@
 package com.kodilla.tictactoe.running.javafxboard;
 
-import com.kodilla.tictactoe.running.javafxboard.gameoption.GameOptionConsoleOrJavaFx;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
