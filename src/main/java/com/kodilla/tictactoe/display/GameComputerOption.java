@@ -18,7 +18,7 @@ enum OptionLevel {
             case EASY -> {
                 if (GameOptionLoadGame.loadGame) {
                     SaveGameplay saveGameplay = new SaveGameplay();
-                    saveGameplay.loadGame(board, saveGameplay.savedGameFile);
+                    SaveGameplay.loadGame(board, SaveGameplay.savedGameFile);
                     saveGameplay.nextMoveMinMaxAlgorithm(board);
                 }
                 else if (GameOptionConsoleOrJavaFx.console){
@@ -33,7 +33,7 @@ enum OptionLevel {
             case HARD -> {
                 if (GameOptionLoadGame.loadGame) {
                     SaveGameplay saveGameplay = new SaveGameplay();
-                    saveGameplay.loadGame(board, saveGameplay.savedGameFile);
+                    SaveGameplay.loadGame(board, SaveGameplay.savedGameFileMinMaxAlg);
                     GameComputerOption.computerHard = true;
                     saveGameplay.nextMoveMinMaxAlgorithm(board);
                 }

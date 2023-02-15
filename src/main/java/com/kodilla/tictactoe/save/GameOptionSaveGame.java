@@ -13,13 +13,21 @@ enum OptionSaveGame {
         switch (option) {
             case SAVE -> {
                 SaveGameplay saveGameplay = new SaveGameplay();
-                SaveGameplay.saveGame(board, saveGameplay.savedGameFile);
+                if (GameComputerOption.computerHard) {
+                    SaveGameplay.saveGame(board, SaveGameplay.savedGameFileMinMaxAlg);
+                }
+                else
+                    SaveGameplay.saveGame(board, SaveGameplay.savedGameFile);
             }
             case PLAY -> {
                 if (GameComputerOption.computerHard && GameOptionSaveGame.play) {
                     //GameOptionSaveGame.play = true;
                     SaveGameplay saveGameplay = new SaveGameplay();
-                    saveGameplay.loadGame(board, saveGameplay.savedGameFile);
+                    if (GameComputerOption.computerHard) {
+                        SaveGameplay.loadGame(board, SaveGameplay.savedGameFileMinMaxAlg);
+                    }
+                    else
+                        SaveGameplay.loadGame(board, SaveGameplay.savedGameFile);
                     ComputerMoveMinMaxAlgorithm.computerMoveMinMaxAlgorithm(board);
                 }
                 else

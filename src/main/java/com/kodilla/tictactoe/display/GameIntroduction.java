@@ -9,6 +9,7 @@ import java.util.Scanner;
 public class GameIntroduction {
 
     public static boolean emptyFile;
+    public static boolean emptyFileMinMaxAlg;
 
     public static void loadBoardGame() throws Exception {
         //Array only required to run the application!
@@ -16,9 +17,14 @@ public class GameIntroduction {
 
         try {
             SaveGameplay saveGameplay = new SaveGameplay();
-            emptyFile = saveGameplay.savedGameFile.length() == 0;
+            emptyFile = SaveGameplay.savedGameFile.length() == 0;
+            emptyFileMinMaxAlg = SaveGameplay.savedGameFile.length() == 0;
+
             nameOfGame();
             if (!emptyFile) {
+                GameOptionLoadGame.gameChoice(boardStart);
+            }
+            else if (!emptyFileMinMaxAlg) {
                 GameOptionLoadGame.gameChoice(boardStart);
             }
             else {

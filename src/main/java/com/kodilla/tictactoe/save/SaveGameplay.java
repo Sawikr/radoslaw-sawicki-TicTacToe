@@ -12,18 +12,28 @@ import java.io.FileOutputStream;
 
 public class SaveGameplay {
 
-    public File savedGameFile;
+    public static File savedGameFile;
+    public static File savedGameFileMinMaxAlg;
 
     public SaveGameplay() {
         savedGameFile = new File("saveGame.txt");
+        savedGameFileMinMaxAlg = new File("saveGameMinMaxAlg.txt");
     }
 
     public static void saveGame(char[][] board, File savedGame) {
         try {
-            FileOutputStream oos = new FileOutputStream(savedGame, false);
+            FileOutputStream oos = null;
+            if (savedGame.equals(savedGameFile)) {
+                oos = new FileOutputStream(savedGame, false);
+            }
+            else if (savedGame.equals(savedGameFileMinMaxAlg)) {
+                oos = new FileOutputStream(savedGame, false);
+            }
+
             int dim = board.length;
             for (int row = 0; row < dim; row++){
                 for (int column = 0; column < dim; column++){
+                    assert oos != null;
                     oos.write(board[row][column]);
                 }
             }
@@ -38,6 +48,7 @@ public class SaveGameplay {
                 GameBoard.printBoard(board);
 
             System.out.println("\nEND GAME!");
+            assert oos != null;
             oos.flush();
             oos.close();
             System.exit(0);
@@ -46,10 +57,16 @@ public class SaveGameplay {
         }
     }
 
-    public char[][] loadGame(char[][] board, File savedGame) {
-        System.out.println();
+    public static void loadGame(char[][] board, File savedGame) {
+        System.out.println("\nGame board:");
+        FileInputStream ois = null;
         try {
-            FileInputStream ois = new FileInputStream(savedGame);
+            if (savedGame.equals(savedGameFile)) {
+                ois = new FileInputStream(savedGame);
+            }
+            else if (savedGame.equals(savedGameFileMinMaxAlg)) {
+                ois = new FileInputStream(savedGame);
+            }
             int dim = board.length;
             System.out.print("\t");
             for (int i = 0; i < dim; i++) {
@@ -59,17 +76,18 @@ public class SaveGameplay {
             for (int row = 0; row < dim; row++) {
                 System.out.print(row + ".\t");
                 for (int column = 0; column < dim; column++) {
+                    assert ois != null;
                     int character = ois.read();
                     System.out.print((char) character + "\t");
                     board[row][column] = (char) character;
                 }
                 System.out.println();
             }
+            assert ois != null;
             ois.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return board;
     }
 
     public void nextMoveMinMaxAlgorithm(char[][] board) {
