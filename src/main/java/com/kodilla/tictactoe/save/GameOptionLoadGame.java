@@ -22,7 +22,7 @@ enum OptionLoadGame {
                 if (!GameIntroduction.emptyFile) {
                     TicTacToeMainRunning.mainRunning();
                 }
-                if (GameComputerOption.computerHard){
+                else if (GameComputerOption.computerHard){
                     ComputerMoveMinMaxAlgorithm.computerMoveMinMaxAlgorithm(board);
                 }
                 else

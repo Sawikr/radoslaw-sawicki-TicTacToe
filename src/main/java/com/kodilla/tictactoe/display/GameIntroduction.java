@@ -18,7 +18,7 @@ public class GameIntroduction {
         try {
             SaveGameplay saveGameplay = new SaveGameplay();
             emptyFile = SaveGameplay.savedGameFile.length() == 0;
-            emptyFileMinMaxAlg = SaveGameplay.savedGameFile.length() == 0;
+            emptyFileMinMaxAlg = SaveGameplay.savedGameFileMinMaxAlg.length() == 0;
 
             nameOfGame();
             if (!emptyFile) {

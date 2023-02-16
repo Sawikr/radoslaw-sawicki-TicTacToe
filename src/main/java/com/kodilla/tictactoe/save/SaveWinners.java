@@ -12,7 +12,7 @@ public class SaveWinners implements Serializable {
         this.winner = winner;
         File savedHashMaps = new File("ranking.txt");
         saveGame(String.valueOf(winner), date, savedHashMaps);
-        System.out.print("\nRanking of winners:");
+        System.out.print("\nRanking of winners:\n");
         loadGame(savedHashMaps);
     }
 

@@ -1,0 +1,47 @@
+//Method not used!
+    public void saveGameObject(HashMap<String, LocalDate> map, File savedHashMaps) {
+        try {
+            ObjectOutputStream oos = new ObjectOutputStream (new FileOutputStream(savedHashMaps));
+            //Writer object not data
+            oos.writeObject(map);
+            oos.flush();
+            oos.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    //Method not used!
+    @SuppressWarnings("unchecked")
+    public void loadGameObject(HashMap<String, LocalDate> map, File savedHashMaps) {
+        try {
+            System.out.println();
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(savedHashMaps));
+            Object readMap = ois.readObject();
+            if (readMap instanceof HashMap) {
+                map.putAll((HashMap) readMap);
+                for(Map.Entry<String, LocalDate> obj : map.entrySet()){
+                    System.out.println(obj.getKey() + " : " + obj.getValue());
+                }
+            }
+            ois.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+	
+	//Class CheckWinMinMaxAlg
+    //Method works for an array of 3 x 3. Method not used!
+    public boolean hasPlayerWon(char[][] board, int player) {
+        if ((board[0][0] == board[1][1] && board[0][0] == board[2][2] && board[0][0] == player) ||
+                (board[0][2] == board[1][1] && board[0][2] == board[2][0] && board[0][2] == player)) {
+            return true;
+        }
+        for (int i = 0; i < board.length; ++i) {
+            if (((board[i][0] == board[i][1] && board[i][0] == board[i][2] && board[i][0] == player)
+                    || (board[0][i] == board[1][i] && board[0][i] == board[2][i] && board[0][i] == player))) {
+                return true;
+            }
+        }
+        return false;
+    }
