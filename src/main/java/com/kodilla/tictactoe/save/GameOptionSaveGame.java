@@ -6,19 +6,12 @@ import com.kodilla.tictactoe.logic.algorithmMinMax.ComputerMoveMinMaxAlgorithm;
 import java.util.Scanner;
 
 enum OptionSaveGame {
+    PLAY,
     SAVE,
-    PLAY;
+    QUIT;
 
     public static void gameSaveOption(OptionSaveGame option, char[][] board) {
         switch (option) {
-            case SAVE -> {
-                SaveGameplay saveGameplay = new SaveGameplay();
-                if (GameComputerOption.computerHard) {
-                    SaveGameplay.saveGame(board, SaveGameplay.savedGameFileMinMaxAlg);
-                }
-                else
-                    SaveGameplay.saveGame(board, SaveGameplay.savedGameFile);
-            }
             case PLAY -> {
                 if (GameComputerOption.computerHard && GameOptionSaveGame.play) {
                     //GameOptionSaveGame.play = true;
@@ -32,6 +25,18 @@ enum OptionSaveGame {
                 }
                 else
                     System.out.println("Continue playing!");
+            }
+            case SAVE -> {
+                SaveGameplay saveGameplay = new SaveGameplay();
+                if (GameComputerOption.computerHard) {
+                    SaveGameplay.saveGame(board, SaveGameplay.savedGameFileMinMaxAlg);
+                }
+                else
+                    SaveGameplay.saveGame(board, SaveGameplay.savedGameFile);
+            }
+            case QUIT -> {
+                System.out.println("\nEND GAME!");
+                System.exit(0);
             }
         }
     }
@@ -50,15 +55,16 @@ public class GameOptionSaveGame {
 
     public static void gameChoice(char[][] board) {
         System.out.print("\nGame option:" +
+                "\nPLAY - continue game" +
                 "\nSAVE - save game state" +
-                "\nPLAY - continue game\n" +
+                "\nQUIT - end of the game\n" +
                 "\nSelect a game option: ");
 
         input = new Scanner(System.in);
         choice = input.next().toUpperCase();
 
         String correct = ChoiceController.getCorrectNameConsoleSaveGame(choice);
-        if (correct.equals("SAVE") || correct.equals("PLAY"))
+        if (correct.equals("PLAY") || correct.equals("SAVE") || correct.equals("QUIT"))
             OptionSaveGame.gameSaveOption(OptionSaveGame.valueOf(correct), board);
     }
 }

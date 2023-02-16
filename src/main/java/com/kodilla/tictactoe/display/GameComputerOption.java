@@ -4,10 +4,13 @@ import com.kodilla.tictactoe.controller.ChoiceController;
 import com.kodilla.tictactoe.logic.algorithmMinMax.ComputerMoveMinMaxAlgorithm;
 import com.kodilla.tictactoe.logic.move.FirstMove;
 import com.kodilla.tictactoe.logic.win.GameWinner;
+import com.kodilla.tictactoe.running.TicTacToeMainRunning;
 import com.kodilla.tictactoe.running.javafxboard.gameoption.GameOptionConsoleOrJavaFx;
 import com.kodilla.tictactoe.save.GameOptionLoadGame;
 import com.kodilla.tictactoe.save.SaveGameplay;
 import java.util.Scanner;
+import static com.kodilla.tictactoe.display.GameIntroduction.emptyFile;
+import static com.kodilla.tictactoe.display.GameIntroduction.emptyFileMinMaxAlg;
 
 enum OptionLevel {
     EASY,
@@ -17,11 +20,18 @@ enum OptionLevel {
         switch (option) {
             case EASY -> {
                 if (GameOptionLoadGame.loadGame) {
-                    SaveGameplay saveGameplay = new SaveGameplay();
-                    SaveGameplay.loadGame(board, SaveGameplay.savedGameFile);
-                    saveGameplay.nextMoveMinMaxAlgorithm(board);
+                    if (emptyFile && emptyFileMinMaxAlg) {
+                        SaveGameplay saveGameplay = new SaveGameplay();
+                        SaveGameplay.loadGame(board, SaveGameplay.savedGameFile);
+                        saveGameplay.nextMoveMinMaxAlgorithm(board);
+                    }
+                    else {
+                        System.out.println("\nNo saved game!\nNew game!\n");
+                        GameComputerOption.empty = true;
+                        TicTacToeMainRunning.mainRunning();
+                    }
                 }
-                else if (GameOptionConsoleOrJavaFx.console){
+                else if (GameOptionConsoleOrJavaFx.console) {
                     System.out.println("Easy game against the computer!");
                     //Drawing the first player
                     char activePlayer = FirstMove.firstPlayerDraw();
@@ -32,10 +42,19 @@ enum OptionLevel {
             }
             case HARD -> {
                 if (GameOptionLoadGame.loadGame) {
-                    SaveGameplay saveGameplay = new SaveGameplay();
-                    SaveGameplay.loadGame(board, SaveGameplay.savedGameFileMinMaxAlg);
-                    GameComputerOption.computerHard = true;
-                    saveGameplay.nextMoveMinMaxAlgorithm(board);
+                    if (emptyFile && emptyFileMinMaxAlg) {
+                        SaveGameplay saveGameplay = new SaveGameplay();
+                        SaveGameplay.loadGame(board, SaveGameplay.savedGameFileMinMaxAlg);
+                        GameComputerOption.computerHard = true;
+                        saveGameplay.nextMoveMinMaxAlgorithm(board);
+                    }
+                    else {
+                        System.out.println("\nNo saved game!\nNew game!\n");
+                        GameComputerOption.empty = true;
+                        System.out.println("Hard game against the computer (MinMaxAlgorithm)!");
+                        GameComputerOption.computerHard = true;
+                        ComputerMoveMinMaxAlgorithm.computerMoveMinMaxAlgorithm(board);
+                    }
                 }
                 else {
                     System.out.println("Hard game against the computer (MinMaxAlgorithm)!");
@@ -53,6 +72,7 @@ public class GameComputerOption {
     static String choice;
     static Scanner input;
     public static boolean computerHard;
+    public static boolean empty;
 
     public GameComputerOption(OptionLevel option) {
         GameComputerOption.option = option;

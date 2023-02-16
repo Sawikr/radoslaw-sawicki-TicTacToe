@@ -1,6 +1,8 @@
 package com.kodilla.tictactoe.display;
 
 import com.kodilla.tictactoe.controller.ChoiceController;
+import com.kodilla.tictactoe.logic.move.FirstMove;
+import com.kodilla.tictactoe.logic.win.GameWinner;
 import java.util.Scanner;
 
 enum Option {
@@ -16,6 +18,16 @@ enum Option {
             case COMPUTER -> {
                 System.out.println("Game with computer!");
                 GameOption.computerMove = true;
+                if (GameComputerOption.empty) {
+                    char[][] board = new char[3][3];
+                    System.out.println("Easy game against the computer!");
+                    //Drawing the first player
+                    char activePlayer = FirstMove.firstPlayerDraw();
+                    System.out.println("\nThe game begins with player: '" + activePlayer + "'!");
+                    //Check winner!
+                    GameWinner.numberOfWinningMoves(board, activePlayer);
+                    GameComputerOption.empty = false;
+                }
             }
         }
     }

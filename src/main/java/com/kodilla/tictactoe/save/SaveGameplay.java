@@ -16,7 +16,7 @@ public class SaveGameplay {
     public static File savedGameFileMinMaxAlg;
 
     public SaveGameplay() {
-        savedGameFile = new File("saveGame.txt");
+        savedGameFile = new File("saveGame.txt");//relative path
         savedGameFileMinMaxAlg = new File("saveGameMinMaxAlg.txt");
     }
 

@@ -3,7 +3,6 @@ package com.kodilla.tictactoe.logic.move;
 import com.kodilla.tictactoe.controller.ChoiceController;
 import com.kodilla.tictactoe.display.GameBoard;
 import com.kodilla.tictactoe.save.GameOptionSaveGame;
-
 import java.util.Scanner;
 
 public class PerformMove {

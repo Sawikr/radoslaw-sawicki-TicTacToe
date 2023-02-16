@@ -69,7 +69,7 @@ public class ChoiceController {
     }
 
     public static String getCorrectNameConsoleSaveGame(String choice){
-        while (!choice.equals("SAVE") && !choice.equals("LOAD") && !choice.equals("PLAY")) {
+        while (!choice.equals("PLAY") && !choice.equals("LOAD") && !choice.equals("SAVE") && !choice.equals("QUIT")) {
             System.out.println("Choice invalid, please try again!");
             Scanner input = new Scanner(System.in);
             choice = input.next().toUpperCase();

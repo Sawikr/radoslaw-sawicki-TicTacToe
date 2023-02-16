@@ -9,7 +9,8 @@ import java.util.Scanner;
 
 enum OptionLoadGame {
     LOAD,
-    PLAY;
+    PLAY,
+    QUIT;
 
     public static void gameLoadOption(OptionLoadGame option, char[][] board) {
         switch (option) {
@@ -22,11 +23,18 @@ enum OptionLoadGame {
                 if (!GameIntroduction.emptyFile) {
                     TicTacToeMainRunning.mainRunning();
                 }
+                else if (!GameIntroduction.emptyFileMinMaxAlg) {
+                    TicTacToeMainRunning.mainRunning();
+                }
                 else if (GameComputerOption.computerHard){
                     ComputerMoveMinMaxAlgorithm.computerMoveMinMaxAlgorithm(board);
                 }
                 else
                     System.out.println("Continue playing!");
+            }
+            case QUIT -> {
+                System.out.println("\nEND GAME!");
+                System.exit(0);
             }
         }
     }
@@ -46,7 +54,8 @@ public class GameOptionLoadGame {
     public static void gameChoice(char[][] board) {
         System.out.print("\nGame option:" +
                 "\nLOAD - load game state" +
-                "\nPLAY - start new game\n" +
+                "\nPLAY - start new game" +
+                "\nQUIT - end of the game\n" +
                 "\nSelect a game option: ");
 
         input = new Scanner(System.in);
@@ -54,7 +63,7 @@ public class GameOptionLoadGame {
 
         loadGame = false;
         String correct = ChoiceController.getCorrectNameConsoleSaveGame(choice);
-        if (correct.equals("LOAD") || correct.equals("PLAY"))
+        if (correct.equals("LOAD") || correct.equals("PLAY") || correct.equals("QUIT"))
             OptionLoadGame.gameLoadOption(OptionLoadGame.valueOf(correct), board);
     }
 }

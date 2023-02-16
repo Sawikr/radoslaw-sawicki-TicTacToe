@@ -1,6 +1,5 @@
 package com.kodilla.tictactoe.logic.win;
 
-import com.kodilla.tictactoe.display.GameBoard;
 import com.kodilla.tictactoe.logic.move.DrawMove;
 import com.kodilla.tictactoe.logic.move.NextMove;
 import com.kodilla.tictactoe.logic.move.PerformMove;

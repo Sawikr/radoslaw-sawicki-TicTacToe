@@ -10,7 +10,7 @@ import static com.kodilla.tictactoe.running.javafxboard.Controller.closeProgram;
 
 /**
  * @author Radoslaw Sawicki
- * @version 1.0.3
+ * @version 2.0.0
  * @apiNote Program with javaFX
  * @apiNote Task: 9.2
  */
