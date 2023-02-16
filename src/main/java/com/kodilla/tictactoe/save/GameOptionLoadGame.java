@@ -46,6 +46,7 @@ public class GameOptionLoadGame {
     static Scanner input;
     public static String choice;
     public static boolean loadGame;
+    public static boolean empty;
 
     public GameOptionLoadGame(OptionLoadGame option) {
         GameOptionLoadGame.option = option;
@@ -62,6 +63,7 @@ public class GameOptionLoadGame {
         choice = input.next().toUpperCase();
 
         loadGame = false;
+        empty = false;
         String correct = ChoiceController.getCorrectNameConsoleSaveGame(choice);
         if (correct.equals("LOAD") || correct.equals("PLAY") || correct.equals("QUIT"))
             OptionLoadGame.gameLoadOption(OptionLoadGame.valueOf(correct), board);

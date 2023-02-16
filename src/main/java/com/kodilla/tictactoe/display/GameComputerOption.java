@@ -20,14 +20,14 @@ enum OptionLevel {
         switch (option) {
             case EASY -> {
                 if (GameOptionLoadGame.loadGame) {
-                    if (emptyFile && emptyFileMinMaxAlg) {
+                    if (!emptyFile && !emptyFileMinMaxAlg) {
                         SaveGameplay saveGameplay = new SaveGameplay();
                         SaveGameplay.loadGame(board, SaveGameplay.savedGameFile);
                         saveGameplay.nextMoveMinMaxAlgorithm(board);
                     }
                     else {
-                        System.out.println("\nNo saved game!\nNew game!\n");
-                        GameComputerOption.empty = true;
+                        System.out.println("\nNo saved game!\nNew game!");
+                        GameOptionLoadGame.empty = true;
                         TicTacToeMainRunning.mainRunning();
                     }
                 }
@@ -42,7 +42,7 @@ enum OptionLevel {
             }
             case HARD -> {
                 if (GameOptionLoadGame.loadGame) {
-                    if (emptyFile && emptyFileMinMaxAlg) {
+                    if (!emptyFile && !emptyFileMinMaxAlg) {
                         SaveGameplay saveGameplay = new SaveGameplay();
                         SaveGameplay.loadGame(board, SaveGameplay.savedGameFileMinMaxAlg);
                         GameComputerOption.computerHard = true;
@@ -50,7 +50,7 @@ enum OptionLevel {
                     }
                     else {
                         System.out.println("\nNo saved game!\nNew game!\n");
-                        GameComputerOption.empty = true;
+                        GameOptionLoadGame.empty = true;
                         System.out.println("Hard game against the computer (MinMaxAlgorithm)!");
                         GameComputerOption.computerHard = true;
                         ComputerMoveMinMaxAlgorithm.computerMoveMinMaxAlgorithm(board);
@@ -72,7 +72,6 @@ public class GameComputerOption {
     static String choice;
     static Scanner input;
     public static boolean computerHard;
-    public static boolean empty;
 
     public GameComputerOption(OptionLevel option) {
         GameComputerOption.option = option;
