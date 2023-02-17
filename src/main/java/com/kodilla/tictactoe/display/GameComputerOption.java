@@ -20,7 +20,7 @@ enum OptionLevel {
         switch (option) {
             case EASY -> {
                 if (GameOptionLoadGame.loadGame) {
-                    if (!emptyFile && !emptyFileMinMaxAlg) {
+                    if (!emptyFile && !emptyFileMinMaxAlg && !GameWinner.saveWinner) {
                         SaveGameplay saveGameplay = new SaveGameplay();
                         SaveGameplay.loadGame(board, SaveGameplay.savedGameFile);
                         saveGameplay.nextMoveMinMaxAlgorithm(board);
@@ -28,6 +28,7 @@ enum OptionLevel {
                     else {
                         System.out.println("\nNo saved game!\nNew game!");
                         GameOptionLoadGame.empty = true;
+                        GameWinner.saveWinner = false;
                         TicTacToeMainRunning.mainRunning();
                     }
                 }
@@ -42,7 +43,7 @@ enum OptionLevel {
             }
             case HARD -> {
                 if (GameOptionLoadGame.loadGame) {
-                    if (!emptyFile && !emptyFileMinMaxAlg) {
+                    if (!emptyFile && !emptyFileMinMaxAlg && !GameWinner.saveWinner) {
                         SaveGameplay saveGameplay = new SaveGameplay();
                         SaveGameplay.loadGame(board, SaveGameplay.savedGameFileMinMaxAlg);
                         GameComputerOption.computerHard = true;
@@ -51,6 +52,7 @@ enum OptionLevel {
                     else {
                         System.out.println("\nNo saved game!\nNew game!\n");
                         GameOptionLoadGame.empty = true;
+                        GameWinner.saveWinner = false;
                         System.out.println("Hard game against the computer (MinMaxAlgorithm)!");
                         GameComputerOption.computerHard = true;
                         ComputerMoveMinMaxAlgorithm.computerMoveMinMaxAlgorithm(board);

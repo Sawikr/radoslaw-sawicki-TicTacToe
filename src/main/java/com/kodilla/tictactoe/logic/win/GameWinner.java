@@ -13,6 +13,7 @@ import static com.kodilla.tictactoe.logic.move.PerformMove.movesCounter;
 public class GameWinner {
 
     private static final Logger logger = Logger.getLogger(GameWinner.class.getName());
+    public static boolean saveWinner;
 
     public static void numberOfWinningMoves(char[][] board, char activePlayer) {
         //Variables
@@ -43,12 +44,14 @@ public class GameWinner {
                 System.out.println("\nWinner is: " + winner + "!");
                 String winnerEnd = "Player " + winner;
                 SaveWinners saveWinners = new SaveWinners(winnerEnd, LocalDate.now());
+                saveWinner = true;
                 GameOptionConsoleOrJavaFx.gameChoice();
             }
             else {
                 System.out.println("\nWinner is computer!");
                 String winnerEnd = "Player " + winner;
                 SaveWinners saveWinners = new SaveWinners(winnerEnd, LocalDate.now());
+                saveWinner = true;
                 GameOptionConsoleOrJavaFx.gameChoice();
             }
         }

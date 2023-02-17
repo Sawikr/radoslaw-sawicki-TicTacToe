@@ -77,17 +77,20 @@ public class ComputerMoveMinMaxAlgorithm {
         if (boardMinMax.hasPlayerWonInGame(board, (char) Board.PLAYER_X)) {
             System.out.println("\nYou lost!");
             String winner = "Player X";
+            GameWinner.saveWinner = true;
             SaveWinners saveWinners = new SaveWinners(winner, LocalDate.now());
             GameOptionConsoleOrJavaFx.gameChoice();
         }
         else if (boardMinMax.hasPlayerWonInGame(board, (char) Board.PLAYER_O)) {
             String winner = "Player O";
+            GameWinner.saveWinner = true;
             SaveWinners saveWinners = new SaveWinners(winner, LocalDate.now());
             GameOptionConsoleOrJavaFx.gameChoice();
         }
         //else if (DrawMove.drawMove(board, movesCounter)) {
         else {
             System.out.println("\nDraw!");
+            GameWinner.saveWinner = true;
             GameOptionConsoleOrJavaFx.gameChoice();
         }
     }
